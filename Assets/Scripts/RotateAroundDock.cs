@@ -11,7 +11,6 @@ public class RotateAroundDock : MonoBehaviour
     public float rotateSpeedMultiplier = 1f;
 
     public float angle;
-    private Vector3 offset;
     private Vector3 screenPoint;
     private bool isDragged = false;
 
@@ -30,34 +29,20 @@ public class RotateAroundDock : MonoBehaviour
 
     void Update()
     {
-        if (!isDragged)
-        {
-            // Rotate around the planet
-            Vector2 center = dock.transform.position;
-            angle += rotateSpeedMultiplier * (1 / Mathf.Pow(radius, 2)) * Time.deltaTime;
-            Vector2 delta = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)) * radius;
-            transform.position = center + delta;
-
-        }
+        // Rotate around the planet
+        Vector2 center = dock.transform.position;
+        angle += rotateSpeedMultiplier * (1 / Mathf.Pow(radius, 2)) * Time.deltaTime;
+        Vector2 delta = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)) * radius;
+        transform.position = center + delta;
     }
 
-    void OnMouseDown()
-    {
-        offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
-        isDragged = true;
-    }
 
-    private void OnMouseUp()
+    public void DragPlanet()
     {
-        isDragged = false;
+        Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f);
+        Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint);
+        transform.position = new Vector3(curPosition.x, curPosition.y, 0f);
         ResetPosition();
-    }
-
-    void OnMouseDrag()
-    {
-        Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
-        Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
-        transform.position = curPosition;
     }
 
 }

@@ -248,9 +248,11 @@ GameObject:
   m_Component:
   - component: {fileID: 8562511911165601819}
   - component: {fileID: 61502275}
+  - component: {fileID: 5720282086384465125}
+  - component: {fileID: 3036329016319662376}
   m_Layer: 0
   m_Name: Planet
-  m_TagString: Untagged
+  m_TagString: Planet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -279,7 +281,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8562511911165601818}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a0ea56fc300374ddda52a8e211bef3c7, type: 3}
   m_Name: 
@@ -287,6 +289,43 @@ MonoBehaviour:
   radius: 12.11
   rotateSpeedMultiplier: 20
   angle: 0
+--- !u!114 &5720282086384465125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8562511911165601818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8678b020f0bd74ecab25be5118afcd6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x: 0
+  y: 0
+  randomX: 1000
+  randomY: 1000
+--- !u!50 &3036329016319662376
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8562511911165601818}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 10
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &8562511911994729162
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,9 +345,10 @@ GameObject:
   - component: {fileID: 1763915007963185704}
   - component: {fileID: 2722623677473642642}
   - component: {fileID: 6765643625013810427}
+  - component: {fileID: 4309977900338285787}
   m_Layer: 0
   m_Name: PlanetSprite
-  m_TagString: Untagged
+  m_TagString: Planet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -451,10 +491,10 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
+  MinDistance: 0
+  MaxDistance: 40
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -487,7 +527,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -595,3 +635,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scaleSteps: -12
   randomness: 6
+--- !u!114 &4309977900338285787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8562511911994729162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 093e1cc7c5d604f1a92414cd9edb6639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minRadius: 2
+  maxRadius: 8
