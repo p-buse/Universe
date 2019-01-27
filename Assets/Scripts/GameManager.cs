@@ -5,19 +5,24 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 
-    public enum GameState { flying, docked, capturing, dragging };
+    public enum GameState { flying, docked, capturing };
     public GameState gameState = GameState.docked;
+
+    public AudioClip startCollect;
+    public AudioClip collect;
 
     private Vector2 currentMouseCoords;
     private Camera cam;
     private PlayerMover playerMover;
     private HashSet<RotateAroundDock> draggedPlanets = new HashSet<RotateAroundDock>();
+    private AudioSource audioSource;
 
     public RaycastHit2D[] underMouse;
 
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         cam = GameObject.Find("Main Camera").GetComponent<Camera>();
         playerMover = GameObject.Find("Player").GetComponent<PlayerMover>();
     }
@@ -57,6 +62,8 @@ public class GameManager : MonoBehaviour
                     }
                     if (hit.collider.gameObject.name == "Collect")
                     {
+                        audioSource.clip = startCollect;
+                        audioSource.Play();
                         gameState = GameState.capturing;
                     }
                     if (hit.collider.gameObject.name == "Dock")
@@ -75,31 +82,7 @@ public class GameManager : MonoBehaviour
                 {
                     gameState = GameState.flying;
                 }
-                foreach (RaycastHit2D hit in underMouse)
-                {
-                    if (hit.collider.gameObject.CompareTag("Planet"))
-                    {
-                        gameState = GameState.dragging;
-                        RotateAroundDock rotateAroundDock = hit.collider.gameObject.transform.parent.GetComponent<RotateAroundDock>();
-                        if (rotateAroundDock.enabled)
-                        {
-                            draggedPlanets.Add(rotateAroundDock);
-                        }
-                    }
-                }
             }
-        } else if (gameState == GameState.dragging)
-        {
-            foreach (RotateAroundDock r in draggedPlanets)
-            {
-                r.DragPlanet();
-            }
-
-            if (Input.GetMouseButtonUp(0))
-            {
-                gameState = GameState.docked;
-            }
-
         } else if (gameState == GameState.capturing)
         {
             if (Input.GetMouseButtonDown(0))
@@ -111,7 +94,8 @@ public class GameManager : MonoBehaviour
                         CapturePlanet c = hit.collider.gameObject.GetComponent<CapturePlanet>();
                         if (c)
                         {
-                            Debug.Log("Captured planet!");
+                            audioSource.clip = collect;
+                            audioSource.Play();
                             c.Capture();
                         }
                     }

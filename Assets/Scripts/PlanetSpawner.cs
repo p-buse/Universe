@@ -14,15 +14,15 @@ public class PlanetSpawner : MonoBehaviour
 
     float minInterval = 2f;
 
-    private Camera camera;
+    private Camera cam;
     private float maxDistanceToEdgeOfScreen;
     private GameManager gameManager;
 
     private void Start()
     {
-        camera = GetComponent<Camera>();
+        cam = GetComponent<Camera>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        Vector3 edgeOfScreen = camera.ScreenToWorldPoint(new Vector3(0f, 0f, camera.nearClipPlane));
+        Vector3 edgeOfScreen = cam.ScreenToWorldPoint(new Vector3(0f, 0f, cam.nearClipPlane));
         maxDistanceToEdgeOfScreen = Vector3.Distance(transform.position, edgeOfScreen) + extraDistance;
     }
 

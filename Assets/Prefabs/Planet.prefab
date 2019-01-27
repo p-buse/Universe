@@ -113,8 +113,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c17751c4ed1646a4b2f2fda2a62be51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minScale: 0.5
-  maxScale: 1
+  minScale: 1
+  maxScale: 1.2
 --- !u!114 &886207478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,8 +222,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c17751c4ed1646a4b2f2fda2a62be51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minScale: 0.3
-  maxScale: 0.8
+  minScale: 0.8
+  maxScale: 1
 --- !u!114 &1205622468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -346,6 +346,7 @@ GameObject:
   - component: {fileID: 2722623677473642642}
   - component: {fileID: 6765643625013810427}
   - component: {fileID: 4309977900338285787}
+  - component: {fileID: 1927262620820634460}
   m_Layer: 0
   m_Name: PlanetSprite
   m_TagString: Planet
@@ -404,7 +405,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8acef65051b294542bf4592ee34f85b4, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -412,7 +413,7 @@ SpriteRenderer:
   m_Size: {x: 10.24, y: 10.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!58 &1091970248
@@ -481,7 +482,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 575e77f9187784d4590ebe2804d4afc5, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -490,9 +491,9 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 0
   MinDistance: 0
-  MaxDistance: 40
+  MaxDistance: 65
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -647,5 +648,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 093e1cc7c5d604f1a92414cd9edb6639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minRadius: 2
-  maxRadius: 8
+  minRadius: 8
+  maxRadius: 20
+--- !u!114 &1927262620820634460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8562511911994729162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc8e863c37a0842a096fb24eb10c0635, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pairs:
+  - sprite: {fileID: 21300000, guid: 8acef65051b294542bf4592ee34f85b4, type: 3}
+    clip: {fileID: 8300000, guid: 3c4d9cbd9abb748dc8648a3a15a016ad, type: 3}
+  - sprite: {fileID: 21300000, guid: 875874f09d8074b59a6da7463e8f4af7, type: 3}
+    clip: {fileID: 8300000, guid: b7808b904359e40a69b844a60675c3fc, type: 3}
+  - sprite: {fileID: 21300000, guid: 3bba1ad59bcb24b28bb0e0fc260bc563, type: 3}
+    clip: {fileID: 8300000, guid: dedbb0f7a78f34d8aac65441f28c3361, type: 3}
+  - sprite: {fileID: 21300000, guid: 210d42e46978a426f9fd2f3d2fae8d4b, type: 3}
+    clip: {fileID: 8300000, guid: 506f8caa3742f407a927efcbf1abc9fd, type: 3}
+  - sprite: {fileID: 21300000, guid: c252f633f3a5141e6949af9b851c6b8c, type: 3}
+    clip: {fileID: 8300000, guid: edca79825cc0f467baf795bcbd40c573, type: 3}
+  - sprite: {fileID: 21300000, guid: 0b560bd5e684f464db12d10f660a410f, type: 3}
+    clip: {fileID: 8300000, guid: fdfaf50a6f249406181607601a170448, type: 3}
+  - sprite: {fileID: 21300000, guid: 4c1c4516a101a42cb969bba95fb9516a, type: 3}
+    clip: {fileID: 8300000, guid: 0ec58f4e559b542bfbdbe9e986d434fd, type: 3}
+  - sprite: {fileID: 21300000, guid: 6dfc246dc439945998a99f8bdd930dd9, type: 3}
+    clip: {fileID: 8300000, guid: 64126d95133ca4a7385bc01003ba292c, type: 3}
+  - sprite: {fileID: 21300000, guid: b71f9700cd9c94cb48d5a31d6a5ca04c, type: 3}
+    clip: {fileID: 8300000, guid: 9d878f0773c6342ad9e9fadd6c28c223, type: 3}
+  - sprite: {fileID: 21300000, guid: 2d51fee536de2466aafe23d207b90e9c, type: 3}
+    clip: {fileID: 8300000, guid: 729745450c1e94807b74f11598344d12, type: 3}
+  - sprite: {fileID: 21300000, guid: 109cfad6d88ab41a9987b161c9de5317, type: 3}
+    clip: {fileID: 8300000, guid: ef7f021397363426db365da0fa6421c4, type: 3}
+  - sprite: {fileID: 21300000, guid: 9ee66674dbe494847abe0936218f41f6, type: 3}
+    clip: {fileID: 8300000, guid: 1f7f411935e6f4f6b9e710ccd212ccdd, type: 3}
+  - sprite: {fileID: 21300000, guid: c74a64184839f40168a4bd58c54c5bbf, type: 3}
+    clip: {fileID: 8300000, guid: 1231e447a0b9946339fa67239ae1819c, type: 3}
+  - sprite: {fileID: 21300000, guid: 09719212ec9a64f368e5e67192152153, type: 3}
+    clip: {fileID: 8300000, guid: 041f8638b8f1745d9ad0ab5b822a586b, type: 3}
+  - sprite: {fileID: 21300000, guid: e8f43195e004b46aabb26133de228111, type: 3}
+    clip: {fileID: 8300000, guid: 148859b5d04d4481ab033084e523d273, type: 3}
+  - sprite: {fileID: 21300000, guid: 3f68f39bda76449c1955d79183f2d401, type: 3}
+    clip: {fileID: 8300000, guid: 34cad22fd4c2349468046ef0111f8c1f, type: 3}
+  - sprite: {fileID: 21300000, guid: d2217855a566743bb9ea4a937784bbd2, type: 3}
+    clip: {fileID: 8300000, guid: a1c73981477f24beeb8b4de6670fb505, type: 3}
+  - sprite: {fileID: 21300000, guid: 71379cac3fdc14feea929903492c6817, type: 3}
+    clip: {fileID: 8300000, guid: d643b9e5041c547df8ffca6136e66b38, type: 3}
+  - sprite: {fileID: 21300000, guid: 83e5f914c39344fa1990a1b5ec8fdb67, type: 3}
+    clip: {fileID: 8300000, guid: ebf712c737b8048c0a5ea54f94ef827b, type: 3}
+  - sprite: {fileID: 21300000, guid: 89551eb45c4ad4d9a8d835c3d0bbdc66, type: 3}
+    clip: {fileID: 8300000, guid: 2e51ea8d36c6c4227b083cf941365e1d, type: 3}

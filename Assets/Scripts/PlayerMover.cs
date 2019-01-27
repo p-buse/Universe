@@ -39,8 +39,7 @@ public class PlayerMover : MonoBehaviour
 
     private void Update()
     {
-        if (gameManager.gameState == GameManager.GameState.docked ||
-            gameManager.gameState == GameManager.GameState.dragging)
+        if (gameManager.gameState == GameManager.GameState.docked)
         {
             Dock();
         }
@@ -62,7 +61,6 @@ public class PlayerMover : MonoBehaviour
 
     void OnGUI()
     {
-        Vector3 point = new Vector3();
         Event currentEvent = Event.current;
         Vector2 mousePos = new Vector2();
 

@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-[RequireComponent(typeof(SpriteRenderer))]
 public class PlayPeriodicSoundAndBlink : MonoBehaviour
 {
 
     public float minPeriod = 1.0f;
     public float maxPeriod = 5.0f;
 
-    private float timer = 0.0f;
+    private float timer = 0f;
     private float clipLength;
     private Color trueColor;
 
@@ -19,7 +18,6 @@ public class PlayPeriodicSoundAndBlink : MonoBehaviour
     public float period;
 
     private AudioSource audioSource;
-    private SpriteRenderer spriteRenderer;
 
     private void Start()
     {
@@ -28,10 +26,8 @@ public class PlayPeriodicSoundAndBlink : MonoBehaviour
         period = Random.Range(minPeriod, maxPeriod);
         clipLength = audioSource.clip.length;
 
-        // Blinking
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        trueColor = spriteRenderer.color;
-        spriteRenderer.color = Color.white;
+        // Start by playing and blinking
+        timer = period;
     }
 
     // Update is called once per frame
@@ -48,8 +44,6 @@ public class PlayPeriodicSoundAndBlink : MonoBehaviour
 
     IEnumerator BlinkColor()
     {
-        spriteRenderer.color = trueColor;
         yield return new WaitForSeconds(clipLength);
-        spriteRenderer.color = Color.white;
     }
 }

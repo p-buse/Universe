@@ -12,7 +12,6 @@ public class RotateAroundDock : MonoBehaviour
 
     public float angle;
     private Vector3 screenPoint;
-    private bool isDragged = false;
 
 
     void ResetPosition()
@@ -36,13 +35,5 @@ public class RotateAroundDock : MonoBehaviour
         transform.position = center + delta;
     }
 
-
-    public void DragPlanet()
-    {
-        Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f);
-        Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint);
-        transform.position = new Vector3(curPosition.x, curPosition.y, 0f);
-        ResetPosition();
-    }
 
 }
