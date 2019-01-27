@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CapturedPlanet : MonoBehaviour
+public class RotateAroundDock : MonoBehaviour
 {
 
-    public GameObject target;
+    private GameObject dock;
 
     public float radius = 10f;
     public float rotateSpeedMultiplier = 1f;
@@ -18,12 +18,13 @@ public class CapturedPlanet : MonoBehaviour
 
     void ResetPosition()
     {
-        angle = Vector2.SignedAngle(target.transform.position, transform.position) * Mathf.Deg2Rad;
-        radius = Vector2.Distance(target.transform.position, transform.position);
+        angle = Vector2.SignedAngle(dock.transform.position, transform.position) * Mathf.Deg2Rad;
+        radius = Vector2.Distance(dock.transform.position, transform.position);
     }
 
     private void Start()
     {
+        dock = GameObject.Find("Dock");
         ResetPosition();
     }
 
@@ -32,7 +33,7 @@ public class CapturedPlanet : MonoBehaviour
         if (!isDragged)
         {
             // Rotate around the planet
-            Vector2 center = target.transform.position;
+            Vector2 center = dock.transform.position;
             angle += rotateSpeedMultiplier * (1 / Mathf.Pow(radius, 2)) * Time.deltaTime;
             Vector2 delta = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)) * radius;
             transform.position = center + delta;
