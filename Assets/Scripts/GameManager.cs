@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     public enum GameState { flying, docked, capturing };
     public GameState gameState = GameState.docked;
 
+    public Transform collectEffect;
+
     public AudioClip startCollect;
     public AudioClip collect;
 
@@ -92,10 +94,12 @@ public class GameManager : MonoBehaviour
                     if (hit.collider.gameObject.CompareTag("Planet"))
                     {
                         CapturePlanet c = hit.collider.gameObject.GetComponent<CapturePlanet>();
-                        if (c)
+                        RotateAroundDock r = hit.collider.gameObject.GetComponentInParent<RotateAroundDock>();
+                        if (c && !r.enabled) 
                         {
                             audioSource.clip = collect;
                             audioSource.Play();
+                            Instantiate(collectEffect, c.transform.position, Quaternion.identity);
                             c.Capture();
                         }
                     }

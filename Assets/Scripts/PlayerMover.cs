@@ -7,6 +7,7 @@ public class PlayerMover : MonoBehaviour
 {
 
     public float moveSpeed = 10f;
+    public float maxSpeed = 30f;
 
     private float dockingAnimation = 0f;
 
@@ -32,6 +33,7 @@ public class PlayerMover : MonoBehaviour
                                                        transform.position.y);
         direction = direction.normalized * moveSpeed;
         rb.AddForce(direction);
+        rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeed);
         // Make the player sprite face the direction of its current velocity.
         float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
@@ -47,6 +49,7 @@ public class PlayerMover : MonoBehaviour
 
     public void Dock()
     {
+        rb.velocity = Vector2.zero;
         if (dockingAnimation < 1f)
         {
             dockingAnimation += Time.deltaTime;

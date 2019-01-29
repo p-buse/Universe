@@ -5,8 +5,8 @@ using UnityEngine;
 public class CapturePlanet : MonoBehaviour
 {
 
-    public float minRadius = 2f;
-    public float maxRadius = 8f;
+    public float minRadius;
+    public float maxRadius;
 
     private Transform dock;
     private RotateAroundDock rotateAroundDock;
